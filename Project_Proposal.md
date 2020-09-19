@@ -30,7 +30,7 @@ The main target for this project is non-technical clinical end users mainly heal
 * Convert DICOM to file types compatible with the classifiers. 
 * Build classifiers for x86_64 and (possible) for IBM Power9 architectures that exist at the MOC
 
-## 4. Solution Concept
+## 4. Solution Concept:
 
 Design Implications and Discussion:
 
@@ -53,7 +53,7 @@ Computations run in containers on the Massachusetts Open Cloud that are lightwei
 
 Containerizing allows workflows to be easily distributed
 
-## 5. Acceptance Criteria
+## 5. Acceptance Criteria:
 
 Minimum acceptance criteria includes a pipeline for the Chris app that can turn a host of MRI images into a text report regarding specific attributes of brain anatomy.
 
