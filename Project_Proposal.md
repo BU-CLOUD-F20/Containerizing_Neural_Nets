@@ -50,11 +50,13 @@ Massachusetts Open Cloud:
 ![prof_arch](https://user-images.githubusercontent.com/56164075/93657186-4ef65f80-f9fe-11ea-9b39-163bd5c550ef.png)
 Figure 1: ChRIS and MOC architecture
 
-By deploying applications and computations within the cloud infrastructure, medical innovation can be driven by increasing amounts of data, computations and collaborations. 
 
-Computations run in containers on the Massachusetts Open Cloud that are lightweight and recreatable, this allows faster computation and results. 
+Design Implications and Discussion:
 
-Containerizing allows workflows to be easily distributed.
+Key design decisions and motivation behind them.
+* By deploying applications and computations within the cloud infrastructure, medical innovation can be driven by increasing amounts of data, computations and collaborations. 
+*Computations run in containers on the Massachusetts Open Cloud that are lightweight and recreatable, this allows faster computation and results. 
+*Containerizing allows workflows to be easily distributed.
 
 ## 5. Acceptance Criteria:
 
