@@ -42,6 +42,7 @@ Massachusetts Open Cloud:
 	*Data from ChRIS is processed and initialized for specific plugins
 *Computation setting for the image processing of the desired plugins. Computational output is transferred back to the ChRIS platform.
 
+![unnamed](https://user-images.githubusercontent.com/56164556/93654263-9e329500-f9ea-11ea-9cad-3623d6bfe0a5.png)
 
 Figure 1: ChRIS and MOC architecture
 Design Implications and Discussion
