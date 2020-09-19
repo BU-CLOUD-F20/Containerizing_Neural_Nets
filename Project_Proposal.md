@@ -46,8 +46,8 @@ Massachusetts Open Cloud:
 * Data from ChRIS is processed and initialized for specific plugins
 * Computation setting for the image processing of the desired plugins. Computational output is transferred back to the ChRIS platform.
 
-![unnamed](https://user-images.githubusercontent.com/56164556/93654263-9e329500-f9ea-11ea-9cad-3623d6bfe0a5.png)
 
+![prof_arch](https://user-images.githubusercontent.com/56164075/93657186-4ef65f80-f9fe-11ea-9b39-163bd5c550ef.png)
 Figure 1: ChRIS and MOC architecture
 
 By deploying applications and computations within the cloud infrastructure, medical innovation can be driven by increasing amounts of data, computations and collaborations. 
