@@ -11,24 +11,19 @@ Over the past few decades, there has been a tremendous amount of work done in th
 
 The main target for this project is non-technical clinical end users mainly healthcare providers or researchers. However, developers are also considered for potential development and improvement.
 
-* As a User, I want to choose between computational data classifiers so that I can experiment with the results
-* As a User, I want the app on cloud so that I can work from anywhere I have connection to the internet and the computational resources.
-* As a researcher, I want to be able to use the application on IBM Power9 Architecture so that I can leverage from the built-in hypervisors.
-* As a User, I want to utilize the classifier to gain information about particular brain anatomy pertaining to a patient or across patient populations. 
-
 * As a clinical user, I want to be able to easily access both data and computation results of medical images, therefore I need a user-friendly platform ChRIS whose plugins can perform medical level computation for me.
 * (potential) As a developer, I would like to test the performance of my applications on different architectures (such as x86_64 and Power9), so I need a ChRIS plugin to perform benchmarking tests on these architectures for me. 
 
 
 ## 3.   Scope and Features Of The Project:
 
-* Explore two neural network classifier types
-* A network classifier that attempts to segment multiple classes concurrently and provide classification of each part of the brain. 
+* Explore two neural network classifier types:
+	* A network classifier that attempts to segment multiple classes concurrently and provide classification of each part of the brain. 
 	* A network classifier that leverages many classifiers, each tuned to only one class pertaining to a specific anatomical feature of the brain. 
 * Build or expand some applications that implement the explored neural networks, which can generate detailed reports of MRI images of a patient's neuroanatomy.
 * Ability to run the applications on ChRIS as plugins
 * Convert DICOM to file types compatible with the classifiers. 
-* Build classifiers for x86_64 and (possible) for IBM Power9 architectures that exist at the MOC
+* (possible) Build classifiers for x86_64 and for IBM Power9 architectures that exist at the MOC
 
 ## 4. Solution Concept:
 
@@ -67,24 +62,24 @@ Understanding infrastructure and plugins. Install necessary components to begin:
 …
 
 ### Release #2 (due by Week 7):
-Begin conversion of DICOM images to files suitable for the classifiers
-Get familiar with ChRIS CNN plugin
-Begin work on few small classifiers
-Begin working on ChRIS connection to the cloud
+* Begin conversion of DICOM images to files suitable for the classifiers
+* Get familiar with ChRIS CNN plugin
+* Begin work on few small classifiers
+* Begin working on ChRIS connection to the cloud
 …
 
 ### Release #3 (due by Week 9): 
-Test and further improvement of classifiers
-Test compatibility of smaller components of project and flow
+* Be able to explore some existed CNN related plugins on ChRIS
+* Finish a simple MRI classifiers application demo
 …
 
 ### Release #4 (due by Week 11):
-Test and further improvement of classifiers
-Test compatibility of smaller components of project and flow
+* Test and further improvement of classifiers
+* Test compatibility of smaller components of project and flow
 …
 
 ### Release #5 (due by Week 13):
-Finish ChRIS app pipeline 
+* Finish ChRIS app pipeline 
 …
 
 
