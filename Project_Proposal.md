@@ -55,8 +55,8 @@ Design Implications and Discussion:
 
 Key design decisions and motivation behind them.
 * By deploying applications and computations within the cloud infrastructure, medical innovation can be driven by increasing amounts of data, computations and collaborations. 
-*Computations run in containers on the Massachusetts Open Cloud that are lightweight and recreatable, this allows faster computation and results. 
-*Containerizing allows workflows to be easily distributed.
+* Computations run in containers on the Massachusetts Open Cloud that are lightweight and recreatable, this allows faster computation and results. 
+* Containerizing allows workflows to be easily distributed.
 
 ## 5. Acceptance Criteria:
 
