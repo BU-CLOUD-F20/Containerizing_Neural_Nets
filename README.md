@@ -1,4 +1,3 @@
-# Project Proposal
 **Group Members**:
 - Xiaoyu An
 - Kenneth Krebs
