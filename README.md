@@ -1,3 +1,16 @@
+# Containerizing Neural Network Apps for Medical Compute
+## Mentors:
+-  Rudolph Pienaar
+- Sandip Samal
+
+## Group Members:
+- Xiaoyu An
+- Kenneth Krebs
+- Brian Mahabir
+- Cagri Yoruk
+- Tingyi Zhang
+
+
 ## 1. Vision and Goals Of The Project: 
 
 Over the past few decades, there has been a tremendous amount of work done in the area of computational medical research. Researchers used image processing, machine learning and neural networks to determine certain patterns in diseases. However, we can question the practical impact of these improvements. The lack of easy access to data and computational power became the largest obstacle for the non-technical users. Our vision is to develop and expand important medical compute applications and help to make them deliverable to clinical users at Boston Children's Hospital.
@@ -78,11 +91,3 @@ Understanding infrastructure and plugins. Install necessary components to begin:
 
 ### Release #5 (due by Week 13):
 * Finish ChRIS app pipeline 
-
-
-**Group Members**:
-- Xiaoyu An
-- Kenneth Krebs
-- Brian Mahabir
-- Cagri Yoruk
-- Tingyi Zhang
