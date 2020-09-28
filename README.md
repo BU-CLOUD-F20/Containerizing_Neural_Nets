@@ -4,6 +4,8 @@
 - Sandip Samal
 
 ## Group Members:
+- Rudolf Pienaar (Mentor)
+- Sandip Samal (Mentor)
 - Xiaoyu An
 - Kenneth Krebs
 - Brian Mahabir
@@ -13,7 +15,7 @@
 
 ## 1. Vision and Goals Of The Project: 
 
-Over the past few decades, there has been a tremendous amount of work done in the area of computational medical research. Researchers used image processing, machine learning and neural networks to determine certain patterns in diseases. However, we can question the practical impact of these improvements. The lack of easy access to data and computational power became the largest obstacle for the non-technical users. Our vision is to develop and expand important medical compute applications and help to make them deliverable to clinical users at Boston Children's Hospital.
+Over the past few decades, there has been a tremendous amount of work done in the area of computational medical research. Researchers used image processing, machine learning and neural networks to determine certain patterns in diseases. However, we can question the practical impact of these improvements. The lack of easy access to data and computational power became the largest obstacle for the non-technical users. Our vision is to develop a ChRIS plugin that provides a text report of the MRI images using convolutional neural networks for clinical users at Boston Children's Hospital.
 
 * Use Convolutional neural networks to segment brain MRI images.
 * Create ChRIS plugin applications to run the neural network.
