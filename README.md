@@ -4,8 +4,6 @@
 - Sandip Samal
 
 ## Group Members:
-- Rudolf Pienaar (Mentor)
-- Sandip Samal (Mentor)
 - Xiaoyu An
 - Kenneth Krebs
 - Brian Mahabir
