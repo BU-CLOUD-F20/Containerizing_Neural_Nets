@@ -47,7 +47,7 @@ Massachusetts Open Cloud:
 * Computation setting for the image processing of the desired plugins. Computational output is transferred back to the ChRIS platform.
 
 
-![prof_arch](https://user-images.githubusercontent.com/56164075/93657186-4ef65f80-f9fe-11ea-9b39-163bd5c550ef.png)
+![Arch@3x](https://user-images.githubusercontent.com/56164075/94507017-c84f3880-01dc-11eb-9fe0-4efb2857ae19.png)
 Figure 1: ChRIS and MOC architecture
 
 
