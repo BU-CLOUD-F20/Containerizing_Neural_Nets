@@ -25,7 +25,6 @@ Over the past few decades, there has been a tremendous amount of work done in th
 The main target for this project is non-technical clinical end users mainly healthcare providers or researchers. However, developers are also considered for potential development and improvement.
 
 * As a clinical user, I want to be able to easily access both data and computation results of medical images, therefore I need a user-friendly platform ChRIS whose plugins can perform medical level computation for me.
-* (potential) As a developer, I would like to test the performance of my applications on different architectures (such as x86_64 and Power9), so I need a ChRIS plugin to perform benchmarking tests on these architectures for me. 
 
 
 ## 3.   Scope and Features Of The Project:
