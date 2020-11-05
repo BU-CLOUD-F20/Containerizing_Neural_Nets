@@ -10,17 +10,25 @@
 #
 
 
-import os
-import importlib.metadata
 
+import os
+# import importlib.metadata
+import numpy as np
+from matplotlib import pyplot as plt
+from skimage.io import imread
 from chrisapp.base import ChrisApp
 
 
 Gstr_title = """
 
-Generate a title from 
-http://patorjk.com/software/taag/#p=display&f=Doom&t=heatmap
-
+ _                _                         
+| |              | |                        
+| |__   ___  __ _| |_ _ __ ___   __ _ _ __  
+| '_ \ / _ \/ _` | __| '_ ` _ \ / _` | '_ \ 
+| | | |  __/ (_| | |_| | | | | | (_| | |_) |
+|_| |_|\___|\__,_|\__|_| |_| |_|\__,_| .__/ 
+                                     | |    
+                                     |_|    
 """
 
 Gstr_synopsis = """
@@ -99,7 +107,7 @@ class Heatmap(ChrisApp):
     TYPE                    = 'ds'
     DESCRIPTION             = 'An app to examine the inference differences between predictions and ground truth masks for low contrast images'
     DOCUMENTATION           = 'heatmap'
-    VERSION                 = importlib.metadata.version(__package__)
+    VERSION                 = '0.1'
     ICON                    = '' # url of an icon image
     LICENSE                 = 'Opensource (MIT)'
     MAX_NUMBER_OF_WORKERS   = 1  # Override with integer value
@@ -136,9 +144,34 @@ class Heatmap(ChrisApp):
         """
         print(Gstr_title)
         print('Version: %s' % self.get_version())
+        self.load_images(options)
 
     def show_man_page(self):
         """
         Print the app's man page.
         """
         print(Gstr_synopsis)
+
+    def load_images(self, options):
+
+        img1 = imread(options.inputdir)
+        img2 = imread(options.outputdir)
+   
+        self.create_heatmap(img1, img2)
+
+    def create_heatmap(self, img1, img2):
+    
+        heat_map = np.zeros([256,256],dtype=np.uint8)
+        for i in range(0,255):
+            for j in range(0,255):
+                heat_map[i][j] = abs(img2[i][j]-img1[i][j])
+            
+            
+        fig= plt.figure(figsize=(14,16))
+        plt.imshow(heat_map,cmap='hot')
+        plt.show()
+
+# ENTRYPOINT
+if __name__ == "__main__":
+    chris_app = Heatmap()
+    chris_app.launch()
