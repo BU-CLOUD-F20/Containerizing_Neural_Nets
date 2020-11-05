@@ -1,0 +1,10 @@
+chrisapp~=1.1.6
+numba
+scikit-image
+pudb
+nibabel
+numpy
+tqdm
+scipy
+pillow
+imageio
