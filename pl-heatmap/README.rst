@@ -80,11 +80,13 @@ To run from PyPI, simply do a
     pip install heatmap
 
 and run with
+
 .. code:: bash
 
     heatmap.py --man /tmp /tmp
 
 to get inline help. The app should also understand being called with only two positional arguments
+
 .. code:: bash
 
     heatmap.py /some/input/directory /destination/directory
