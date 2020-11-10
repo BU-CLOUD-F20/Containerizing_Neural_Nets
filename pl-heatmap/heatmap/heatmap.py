@@ -142,6 +142,7 @@ class Heatmap(ChrisApp):
         """
         Define the code to be run by this plugin app.
         """
+        
         print(Gstr_title)
         print('Version: %s' % self.get_version())
         self.load_images(options)
@@ -153,23 +154,27 @@ class Heatmap(ChrisApp):
         print(Gstr_synopsis)
 
     def load_images(self, options):
+        img = []
+        for filename in os.listdir(options.inputdir):
+            img.append(options.inputdir +'/' +filename)
+            
+        img1 = imread(img[0])
+        img2 = imread(img[1])
+        
+        self.create_heatmap(options, img1, img2)
 
-        img1 = imread(options.inputdir)
-        img2 = imread(options.outputdir)
-   
-        self.create_heatmap(img1, img2)
-
-    def create_heatmap(self, img1, img2):
-    
+    def create_heatmap(self, options, img1, img2):
         heat_map = np.zeros([256,256],dtype=np.uint8)
         for i in range(0,255):
             for j in range(0,255):
                 heat_map[i][j] = abs(img2[i][j]-img1[i][j])
+                
             
             
-        fig= plt.figure(figsize=(14,16))
+        fig = plt.figure(figsize=(14,16))
         plt.imshow(heat_map,cmap='hot')
-        plt.show()
+        outputfile = options.outputdir + '/' + 'heat_map.png'
+        plt.savefig(outputfile)
 
 # ENTRYPOINT
 if __name__ == "__main__":

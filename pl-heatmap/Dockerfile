@@ -32,5 +32,5 @@ RUN pip --disable-pip-version-check install -r requirements.txt && pip install .
 # docker run --entrypoint /usr/bin/python fnndsc/pl-appname appname /in /out
 # executable scripts are expected to be found in the working directory
 WORKDIR /usr/local/bin
-CMD ["heatmap", "--help"]
+CMD ["heatmap.py", "--help"]
 

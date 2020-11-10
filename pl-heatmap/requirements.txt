@@ -1,1 +1,4 @@
-chrisapp~=1.1.6
+chrisapp==1.1.6
+numpy
+matplotlib
+scikit-image

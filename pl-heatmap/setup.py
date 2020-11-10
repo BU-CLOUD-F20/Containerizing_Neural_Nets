@@ -13,15 +13,12 @@ setup(
     author_email     = 'kenkrebs@bu.edu',
     url              = 'heatmap',
     packages         = ['heatmap'],
-    install_requires = ['chrisapp~=1.1.6'],
+    install_requires = ['chrisapp~=1.1.6', 'numpy'],
     test_suite       = 'nose.collector',
     tests_require    = ['nose'],
     license          = 'MIT',
     zip_safe         = False,
     python_requires  = '>=3.8',
-    entry_points     = {
-        'console_scripts': [
-            'heatmap = heatmap.__main__:main'
-            ]
-        }
-)
+    scripts          = ['heatmap/heatmap.py'])
+     
+
