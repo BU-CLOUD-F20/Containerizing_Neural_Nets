@@ -69,23 +69,24 @@ Getting inline help is:
     docker run --rm fnndsc/pl-heatmap heatmap --man
 
 Run
-~~~
+----
 
-This ```plugin can be run two modes: natively as a python package or as a containerized docker image.
+Using PyPI
+~~~~~~~~~~~~~~~~
+To run from PyPI, simply do a
 
-You need you need to specify input and output directories using the `-v` flag to `docker run`.
+``pip install heatmap``
+and run with
 
+``heatmap.py --man /tmp /tmp``
 
-.. code:: bash
+to get inline help. The app should also understand being called with only two positional arguments
 
-    docker run --rm -u $(id -u)                             \
-        -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing      \
-        fnndsc/pl-heatmap heatmap                        \
-        /incoming /outgoing
+``heatmap.py /some/input/directory /destination/directory``
 
 
 Using Docker Run
-----------------
+~~~~~~~~~~~~~~~~
 
 Build the Docker container:
 
@@ -93,7 +94,7 @@ Build the Docker container:
 
     docker build -t local/pl-heatmap .
 
-To run using docker, be sure to assign an "input" directory to /incoming and an output directory to /outgoing. The input directory should have two images: a training mask and inference image of the same voxel. The output directory should be empty, make sure that the $(pwd)/out directory is world writable!
+To run using docker, be sure to assign an "input" directory to /incoming and an output directory to /outgoing. The input directory should have two images: a training mask and inference image of the same voxel. The output directory should be empty, make sure that the $(pwd)/out directory is world writable! You need you need to specify input and output directories using the `-v` flag to `docker run`.
 
 .. code:: bash
 
