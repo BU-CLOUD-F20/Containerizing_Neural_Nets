@@ -13,14 +13,13 @@ pl-heatmap
 Abstract
 --------
 
-An app to examine the inference differences between predictions and ground truth masks for low contrast images
+An app to examine the inference differences between voxel predictions and ground truth masks for low contrast images.
 
 
 Description
 -----------
 
-``heatmap`` is a ChRIS-based application that...
-
+``heatmap`` is a ChRIS-based application that displays the difference between training masks and inference labels for low contrast, grayscale images. The plugin    initiates a 256x256 numpy array of zeros and and changes each pixel value according the the absolute difference between the training mask and inference image.  The plugin takes a directory with two images (the training mask and inference image of the same voxel) as input, and an empty directory for output as arguments. 
 
 Usage
 -----
@@ -72,6 +71,8 @@ Getting inline help is:
 Run
 ~~~
 
+This ```plugin can be run two modes: natively as a python package or as a containerized docker image.
+
 You need you need to specify input and output directories using the `-v` flag to `docker run`.
 
 
@@ -83,8 +84,8 @@ You need you need to specify input and output directories using the `-v` flag to
         /incoming /outgoing
 
 
-Development
------------
+Using Docker Run
+----------------
 
 Build the Docker container:
 
@@ -92,29 +93,25 @@ Build the Docker container:
 
     docker build -t local/pl-heatmap .
 
-
-Python dependencies can be added to ``setup.py``.
-After a successful build, track which dependencies you have installed by
-generating the `requirements.txt` file.
+To run using docker, be sure to assign an "input" directory to /incoming and an output directory to /outgoing. The input directory should have two images: a training mask and inference image of the same voxel. The output directory should be empty, make sure that the $(pwd)/out directory is world writable!
 
 .. code:: bash
 
-    docker run --rm local/pl-heatmap -m pip freeze > requirements.txt
-
-
-For the sake of reproducible builds, be sure that ``requirements.txt`` is up to date before you publish your code.
-
-
-.. code:: bash
-
-    git add requirements.txt && git commit -m "Bump requirements.txt" && git push
+    mkdir in out && chmod 777 out
+    docker run --rm -u $(id -u)                            \
+        -v $(pwd)/in:/incoming -v $(pwd)/out/:/outgoing    \
+        local/pl-heatmap heatmap.py                        \
+        /incoming /outgoing
 
 
 Examples
 --------
 
-Put some examples here!
-
+mkdir in out && chmod 777 out
+docker run --rm -u $(id -u)                            \
+    -v $(pwd)/in:/incoming -v $(pwd)/out/:/outgoing    \
+    local/pl-heatmap heatmap.py                        \
+    /incoming /outgoing
 
 .. image:: https://raw.githubusercontent.com/FNNDSC/cookiecutter-chrisapp/master/doc/assets/badge/light.png
     :target: https://chrisstore.co
