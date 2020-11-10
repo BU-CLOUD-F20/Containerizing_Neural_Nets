@@ -106,12 +106,12 @@ To run using docker, be sure to assign an "input" directory to /incoming and an 
 
 Examples
 --------
-
-mkdir in out && chmod 777 out
-docker run --rm -u $(id -u)                            \
-    -v $(pwd)/in:/incoming -v $(pwd)/out/:/outgoing    \
-    local/pl-heatmap heatmap.py                        \
-    /incoming /outgoing
+.. code:: bash
+    mkdir in out && chmod 777 out
+    docker run --rm -u $(id -u)                            \
+        -v $(pwd)/in:/incoming -v $(pwd)/out/:/outgoing    \
+        local/pl-heatmap heatmap.py                        \
+        /incoming /outgoing
 
 .. image:: https://raw.githubusercontent.com/FNNDSC/cookiecutter-chrisapp/master/doc/assets/badge/light.png
     :target: https://chrisstore.co
