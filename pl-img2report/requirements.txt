@@ -1,0 +1,9 @@
+chrisapp
+pudb
+nibabel
+pandas
+yattag
+numpy
+scikit-image
+imageio
+scipy

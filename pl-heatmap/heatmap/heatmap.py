@@ -158,13 +158,13 @@ class Heatmap(ChrisApp):
         for filename in os.listdir(options.inputdir):
             img.append(options.inputdir +'/' +filename)
             
-        img1 = imread(img[0])
-        img2 = imread(img[1])
+        img1 = imread(img[0]).astype(np.uint8)
+        img2 = imread(img[1]).astype(np.uint8)
         
         self.create_heatmap(options, img1, img2)
 
     def create_heatmap(self, options, img1, img2):
-        heat_map = np.zeros([256,256],dtype=np.uint8)
+        heat_map = np.zeros([256,256],dtype=np.uint16)
         for i in range(0,255):
             for j in range(0,255):
                 heat_map[i][j] = abs(img2[i][j]-img1[i][j])
