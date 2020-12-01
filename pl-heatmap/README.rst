@@ -60,6 +60,12 @@ Arguments
     
     [--version]
     If specified, print version number and exit. 
+    
+    [--input1]
+    The name of the subdirectory of the input directory to containing either inferred or ground truth images
+
+    [--input2]
+    The name of the subdirectory of the input directory to containing either inferred or ground truth images
 
 
 Getting inline help is:
@@ -119,6 +125,8 @@ Examples
     docker run --rm -u $(id -u)                            \
         -v $(pwd)/in:/incoming -v $(pwd)/out/:/outgoing    \
         local/pl-heatmap heatmap.py                        \
+	    --input1 subdirectoryinferred									   \
+	    --input2 subdirectorygroundtruth										\
         /incoming /outgoing
 
 .. image:: https://raw.githubusercontent.com/FNNDSC/cookiecutter-chrisapp/master/doc/assets/badge/light.png
