@@ -125,8 +125,8 @@ Examples
     docker run --rm -u $(id -u)                            \
         -v $(pwd)/in:/incoming -v $(pwd)/out/:/outgoing    \
         local/pl-heatmap heatmap.py                        \
-	    --input1 subdirectoryinferred									   \
-	    --input2 subdirectorygroundtruth										\
+	 --input1 subdirectoryinferred		 	   \
+	 --input2 subdirectorygroundtruth		   \
         /incoming /outgoing
 
 .. image:: https://raw.githubusercontent.com/FNNDSC/cookiecutter-chrisapp/master/doc/assets/badge/light.png
