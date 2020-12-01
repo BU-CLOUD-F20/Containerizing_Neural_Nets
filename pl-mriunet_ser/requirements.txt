@@ -1,0 +1,15 @@
+chrisapp
+pudb
+nibabel
+numpy
+tqdm
+scipy
+pillow
+imageio
+numba
+tensorflow
+tensorflow-gpu
+keras
+matplotlib
+scikit-image
+opencv-python-headless

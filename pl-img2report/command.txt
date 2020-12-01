@@ -1,0 +1,3 @@
+docker run --rm -ti -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing                              \
+        img2report img2report.py                                    \
+        /incoming /outgoing

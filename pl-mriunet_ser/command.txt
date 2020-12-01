@@ -1,0 +1,5 @@
+docker run --rm                             \
+    -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing      \
+    mriunet_ser mriunet_ser.py                        \
+    --mode 2                        \
+    /incoming /outgoing

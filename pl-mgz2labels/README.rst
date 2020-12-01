@@ -19,67 +19,28 @@ MGZ label-wise converter
 Description
 -----------
 
-``mgz2labels`` is a ChRIS-based application whose backbone is pl-mgz_converter: https://github.com/FNNDSC/pl-mgz_converter
+``mgz2labels`` is a ChRIS-based application whose backbone is `pl-mgz_converter <https://github.com/FNNDSC/pl-mgz_converter>`_. The input file structure is the same as pl-mgz_converter. The output will be 193 labels for each subject in separated folder, and 193 .npy files for each label. The output of this plugin is set to be used for `pl-mricnn <https://github.com/FNNDSC/pl-mricnn>`_ training.
 
 
 Usage
 -----
 
-.. code::
-
-    python mgz2labels.py
-        [-h|--help]
-        [--json] [--man] [--meta]
-        [--savejson <DIR>]
-        [-v|--verbosity <level>]
-        [--version]
-        <inputDir> <outputDir>
-
-
-Arguments
-~~~~~~~~~
+Using Python3
+~~~~~~~~~~~~
 
 .. code::
+    python3 mgz2labels/mgz2labels.py <inputDir> <outputDir>
 
-    [-h] [--help]
-    If specified, show help message and exit.
-    
-    [--json]
-    If specified, show json representation of app and exit.
-    
-    [--man]
-    If specified, print (this) man page and exit.
+Using ``docker run``
+~~~~~~~~~~~~~~~~~~~
 
-    [--meta]
-    If specified, print plugin meta data and exit.
-    
-    [--savejson <DIR>] 
-    If specified, save json representation file to DIR and exit. 
-    
-    [-v <level>] [--verbosity <level>]
-    Verbosity level for app. Not used currently.
-    
-    [--version]
-    If specified, print version number and exit. 
-
-
-Getting inline help is:
+.. code:: bash
+    docker build -t mgz2labels .
 
 .. code:: bash
 
-    docker run --rm fnndsc/pl-mgz2labels mgz2labels --man
-
-Run
-~~~
-
-You need you need to specify input and output directories using the `-v` flag to `docker run`.
-
-
-.. code:: bash
-
-    docker run --rm -u $(id -u)                             \
-        -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing      \
-        fnndsc/pl-mgz2labels mgz2labels                        \
+    docker run --rm -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing                              \
+        mgz2labels mgz2labels.py                                    \
         /incoming /outgoing
 
 
@@ -91,11 +52,6 @@ Build the Docker container:
 .. code:: bash
 
     docker build -t mgz2labels .
-
-
-Python dependencies can be added to ``setup.py``.
-After a successful build, track which dependencies you have installed by
-generating the `requirements.txt` file.
 
 .. code:: bash
 
@@ -116,3 +72,7 @@ Examples
         mgz2labels mgz2labels.py                                    \
         /incoming /outgoing
 
+
+Trouble Shooting
+--------
+Try to remove all ``.DS_Store`` files in the input directory
