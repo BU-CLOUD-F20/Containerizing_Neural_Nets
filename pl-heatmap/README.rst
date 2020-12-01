@@ -32,6 +32,8 @@ Usage
         [--savejson <DIR>]
         [-v|--verbosity <level>]
         [--version]
+	[--input1]                                                 
+        [--input2]                                                  
         <inputDir> <outputDir>
 
 
