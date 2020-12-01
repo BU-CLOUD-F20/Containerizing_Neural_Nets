@@ -53,6 +53,8 @@ where necessary.)
             [--savejson <DIR>]                                          \\
             [-v <level>] [--verbosity <level>]                          \\
             [--version]                                                 \\
+            [--input1]                                                  \\
+            [--input2]                                                  \\
             <inputDir>                                                  \\
             <outputDir> 
 
@@ -91,6 +93,12 @@ where necessary.)
         
         [--version]
         If specified, print version number and exit. 
+
+        [--input1]
+        The name of the subdirectory of the input directory to containing either inferred or ground truth images
+
+        [--input2]
+        The name of the subdirectory of the input directory to containing either inferred or ground truth images
 """
 
 
@@ -133,10 +141,16 @@ class Heatmap(ChrisApp):
     OUTPUT_META_DICT = {}
 
     def define_parameters(self):
+        
         """
         Define the CLI arguments accepted by this plugin app.
         Use self.add_argument to specify a new app argument.
         """
+
+        self.add_argument('--input1',dest='input1',type=str,optional=False,
+                          help='What file do you want to upload?')
+        self.add_argument('--input2',dest='input2',type=str,optional=False,
+                          help='What file do you want to upload?')
 
     def run(self, options):
         """
@@ -151,32 +165,48 @@ class Heatmap(ChrisApp):
         """
         Print the app's man page.
         """
+        
         print(Gstr_synopsis)
 
     def load_images(self, options):
-        img = []
-        for filename in os.listdir(options.inputdir):
-            img.append(options.inputdir +'/' +filename)
-            
-        img1 = imread(img[0])
-        img2 = imread(img[1])
+        
+        img1 = []
+        img2 = []
+
+        print("Loading Images...")
+        for entry in os.scandir(options.inputdir):
+            if entry.name == options.input1:
+                for file in os.scandir(entry):
+                    if (file.path.endswith(".jpg") or file.path.endswith(".png")) and file.is_file():
+                        img1.append(file.path)
+            if entry.name == options.input2:
+                for file in os.scandir(entry):
+                    if (file.path.endswith(".jpg") or file.path.endswith(".png")) and file.is_file():
+                        img2.append(file.path)
+
         
         self.create_heatmap(options, img1, img2)
 
     def create_heatmap(self, options, img1, img2):
-        heat_map = np.zeros([256,256],dtype=np.uint8)
-        for i in range(0,255):
-            for j in range(0,255):
-                heat_map[i][j] = abs(img2[i][j]-img1[i][j])
-                
-            
-            
-        fig = plt.figure(figsize=(14,16))
-        plt.imshow(heat_map,cmap='hot')
-        outputfile = options.outputdir + '/' + 'heat_map.png'
-        plt.savefig(outputfile)
+
+        array_length = len(img1)
+        for num in range(array_length):
+        
+            single_img1 = imread(img1[num])
+            single_img2 = imread(img2[num])
+            heat_map = np.zeros([256,256],dtype=np.uint8)
+            for i in range(0,255):
+                for j in range(0,255):
+                    heat_map[i][j] = abs(single_img2[i][j]-single_img1[i][j])
+
+            fig = plt.figure(figsize=(14,16))
+            plt.imshow(heat_map,cmap='hot')
+            outputfile = options.outputdir + '/' + 'heat_map' + str(num) + '.png'
+            print("Saving heatmap image number ", str(num))
+            plt.savefig(outputfile)
 
 # ENTRYPOINT
 if __name__ == "__main__":
+    
     chris_app = Heatmap()
     chris_app.launch()
