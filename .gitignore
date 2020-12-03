@@ -8,3 +8,4 @@ htmlcov
 .docker
 .idea/
 .vscode/
+.DS_Store
