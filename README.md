@@ -16,6 +16,7 @@
 - Sprint 3: https://docs.google.com/presentation/d/12LAgxo4Nzg0MTL26IW44J_jijqtrgLeclakKOkxVO6o/edit?usp=sharing
 - Sprint 4: https://docs.google.com/presentation/d/13ED_76sb3Yg9nj-MSIy4h0LaPpVP63s4mJ9JBSd2Qp8/edit?usp=sharing
 - [Sprint 5](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/blob/master/DemoSlides/Sprint%205.pdf)
+	- [Presentation](https://youtu.be/wotojEguifg)
 
 ## 1. Vision and Goals Of The Project: 
 
