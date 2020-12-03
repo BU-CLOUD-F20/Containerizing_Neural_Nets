@@ -11,12 +11,12 @@
 - Tingyi Zhang
 
 ## Sprint Presentations
-- [Sprint 1](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/blob/master/DemoSlides/Sprint1.pdf): https://docs.google.com/presentation/d/1LMSpUSUkVkA8jMvqwmo4MTmqT7WC9lxJiBIiFIey9R8/edit?usp=sharing
-- [Sprint 2](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/blob/master/DemoSlides/Sprint2.pdf): https://drive.google.com/file/d/12IQU7zjGk66LDm7JG_Gtvwc0t6YmP1UF/view?usp=sharing
-- [Sprint 3](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/blob/master/DemoSlides/Sprint3%20.pdf): https://docs.google.com/presentation/d/12LAgxo4Nzg0MTL26IW44J_jijqtrgLeclakKOkxVO6o/edit?usp=sharing
-- [Sprint 4](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/blob/master/DemoSlides/Sprint4.pdf): https://docs.google.com/presentation/d/13ED_76sb3Yg9nj-MSIy4h0LaPpVP63s4mJ9JBSd2Qp8/edit?usp=sharing
+- [Sprint 1](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/blob/master/DemoSlides/Sprint1.pdf)
+- [Sprint 2](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/blob/master/DemoSlides/Sprint2.pdf)
+- [Sprint 3](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/blob/master/DemoSlides/Sprint3%20.pdf)
+- [Sprint 4](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/blob/master/DemoSlides/Sprint4.pdf): 
 - [Sprint 5](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/blob/master/DemoSlides/Sprint%205.pdf)
-	- [Presentation](https://youtu.be/wotojEguifg)
+	- [Video](https://youtu.be/wotojEguifg)
 
 ## 1. Vision and Goals Of The Project: 
 
