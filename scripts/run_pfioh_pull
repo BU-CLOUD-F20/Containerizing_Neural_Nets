@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+pfurl --verb POST --raw --httpResponseBodyParse --http $1/api/v1/cmd --msg \
+"{  \"action\": \"pullPath\",
+    \"meta\": {
+        \"remote\": {
+            \"key\":         \"$2\"
+        },
+        \"local\": {
+            \"path\":         \"/home/osboxes/output/$3\",
+            \"createDir\":    true
+        },
+        \"transport\": {
+            \"mechanism\":    \"compress\",
+            \"compress\": {
+                \"archive\":  \"zip\",
+                \"unpack\":   true,
+                \"cleanup\":  true
+            }
+        }
+    }
+}" --quiet --jsonpprintindent 4 --authToken password

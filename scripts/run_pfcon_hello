@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+pfurl --verb POST --raw --http $1/api/v1/cmd --httpResponseBodyParse --jsonwrapper 'payload' --msg \
+"{  \"action\": \"hello\",
+    \"meta\": {
+                \"askAbout\":     \"sysinfo\",
+                \"echoBack\":      \"Hi there!\",
+                \"service\":       \"$2\"
+            }
+}"

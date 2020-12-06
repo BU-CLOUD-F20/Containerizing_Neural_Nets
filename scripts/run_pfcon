@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+pfurl --verb POST --raw --http $1/api/v1/cmd --httpResponseBodyParse --jsonwrapper 'payload' --msg "
+        {   \"action\": \"coordinate\",
+
+            \"meta-store\": {
+                        \"meta\":\"meta-compute\",
+                        \"key\":\"jid\"
+            },
+
+            \"meta-data\": {
+                \"remote\": {
+                        \"key\":\"%meta-store\"
+                },
+                \"localSource\": {
+                        \"path\":\"/tmp/pfioh-test\"
+                },
+                \"localTarget\": {
+                        \"path\":\"/tmp/pfioh-test-download\",
+			\"createDir\":true
+                },
+                \"transport\": {
+                    \"mechanism\":\"compress\",
+                    \"compress\": {
+                        \"archive\":\"zip\",
+                        \"unpack\":true,
+                        \"cleanup\":true
+                    }
+                },
+                \"service\":\"$2\"
+            },
+
+            \"meta-compute\":  {
+                \"cmd\":\"simpledsapp.py --prefix test- --sleepLength 20 /share/incoming /share/outgoing\",
+                \"auid\":\"rudolphpienaar\",
+                \"jid\":\"$3\",
+                \"threaded\":true,
+                \"container\":  {
+                        \"target\": {
+                            \"image\":\"fnndsc/pl-simpledsapp\"
+                        },
+                        \"manager\": {
+                            \"image\":\"fnndsc/openshiftmgr\",
+                            \"app\":\"openshiftmgr.py\",
+                            \"env\": {
+                                \"meta-store\":\"key\",
+                                \"serviceType\":\"openshift\",
+                                \"shareDir\":\"%shareDir\",
+                                \"serviceName\":\"none\"
+                            }
+                        }
+                },
+                \"service\":\"$2\"
+            }
+        }
+"

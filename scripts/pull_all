@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+usage() { echo "Usage: $0 [-p]" 1>&2; exit 1; }
+
+
+if [ -z "${FNNDSC_CODE_ROOT}" ]; then
+  echo "You must first define \$FNNDSC_CODE_ROOT to run this script!"
+  exit 1
+fi
+
+PUSH=false
+
+while getopts "p" o; do
+    case "${o}" in
+        p)
+            PUSH=true
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+# Initialize ssh key
+pushd $FNNDSC_CODE_ROOT/ChRIS-E2E
+  git fetch upstream
+popd
+
+
+repos=( pman pfioh pfcon pfurl ChRIS-E2E ChRIS_ultron_backEnd cookiecutter-chrisapp)
+
+function pull_repo() {
+  local repo_name=$1
+  if [ -d $FNNDSC_CODE_ROOT/$repo_name ]
+  then
+    pushd $FNNDSC_CODE_ROOT/$repo_name >/dev/null
+      local stashed=false
+      git diff-index --quiet HEAD
+      if [ $? -ne 0 ]
+      then
+        git stash
+        stashed=true
+      fi
+      git checkout master
+      echo $repo_name && git fetch upstream
+      git fetch upstream --tags
+      echo $repo_name && git rebase upstream/master
+      if $PUSH
+      then
+        echo $repo_name && git push origin master --force
+      fi
+      git push --tags
+      if $stashed
+      then
+        git stash pop
+      fi
+    popd >/dev/null
+  fi
+}
+
+pidArr=()
+for repo_name in "${repos[@]}"
+do
+  pull_repo $repo_name &
+  pidArr+=($!)
+done
+
+for i in ${pidArr[@]}
+do
+  wait $i
+done
+
+sudo docker pull fnndsc/pman
+sudo docker pull fnndsc/pfioh
+sudo docker pull fnndsc/pfcon
+sudo docker pull fnndsc/chris_dev_backend
