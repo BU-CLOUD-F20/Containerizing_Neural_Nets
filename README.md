@@ -18,4 +18,4 @@ This Wiki page includes the previous work that has done to deploy ChRIS on MOC. 
 This Repo includes the test scripts we've written to test the plugins we've developed: [Cagriyoruk/ChRIS-E2E](https://github.com/Cagriyoruk/ChRIS-E2E)
 
 
-## Demonstrating Plugins We Built on MOC
+## Demonstrating The Plugins We Built on MOC
