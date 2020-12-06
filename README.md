@@ -4,7 +4,7 @@ ChRIS has two important components that is essential to running it's application
 ![](https://www.bu.edu/rhcollab/files/2017/11/image3.png)
 
 ## The Steps
-The steps for deploying ChRIS on MOC can be found here: https://github.com/FNNDSC/ChRIS_on_MOC/wiki. 
+The steps for deploying ChRIS on MOC can be found here: [Chris On MOC](https://github.com/FNNDSC/ChRIS_on_MOC/wiki). 
 
 This Wiki page includes the previous work that has done to deploy ChRIS on MOC. As we came across problems and new issues, we'have taken the lead to change and add more documentation to it. Here are the main steps to deploy ChRIS on MOC:
 1. [Register To Mass Open Cloud](https://github.com/FNNDSC/ChRIS_on_MOC/wiki/1.-Registering-to-Mass-Open-Cloud)
