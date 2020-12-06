@@ -1,0 +1,21 @@
+#!/usr/bin/env bash                                                                                                                                                     
+
+JOBID=$1
+IP=$2
+IMAGE=$3
+
+pfurl --verb POST --raw --http $IP/api/v1/cmd --jsonwrapper 'payload' --msg \
+          '{   "action": "run",                                                                                                                                         
+               "meta":  {                                                                                                                                               
+                    "cmd":      "python3 /usr/src/img2report/img2report.py /share/incoming /share/outgoing",                           
+                    "auid": "cyoruk@bu.edu",                                                                                                                           
+                    "jid":      "'$JOBID'",                                                                                                                             
+                    "threaded": true,                                                                                                                                   
+                    "container": {                                                                                                                                      
+                         "target": {                                                                                                                                    
+                              "image": "'${IMAGE:-tingyizhang/pl-img2report}'"                                                                                                                       
+                              }                                                                                                                                         
+                          },                                                                                                                                            
+                    "number_of_workers": "1"                                                                                                                            
+                }                                                                                                                                                       
+           }' --quiet --jsonpprintindent 4 --authToken password

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+pfurl --verb POST --httpResponseBodyParse --raw --http $1/api/v1/cmd --msg \
+"{  \"action\": \"pushPath\",
+    \"meta\": {
+        \"remote\": {
+            \"key\":         \"$2\"
+        },
+        \"local\": {
+            \"path\":         \"${3:-/tmp/small}\"
+        },
+        \"transport\": {
+            \"mechanism\":    \"compress\",
+            \"compress\": {
+                \"archive\":  \"zip\",
+                \"unpack\":   true,
+                \"cleanup\":  true
+            }
+        }
+    }
+}" --quiet --jsonpprintindent 4 --authToken password

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+pfurl --verb POST --raw --http $1/api/v1/cmd --jsonwrapper 'payload' --msg \
+        "{   \"action\": \"status\",
+            \"meta\":  {
+                \"key\":\"jid\",
+                \"value\": \"$2\"
+            }
+        }" --quiet --jsonpprintindent 4
