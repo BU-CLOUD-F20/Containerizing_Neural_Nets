@@ -64,13 +64,16 @@ Figure 1: ChRIS and MOC architecture
 </p>
 
 
-Figure 2: Workflow Plugin Architecture
+Figure 2 + 3: Workflow Plugin Architecture
 ---
-
-<img width="743" alt="inference_Black@2x" src="https://user-images.githubusercontent.com/56164075/101413426-42253180-38b2-11eb-9e13-61ec62e3f085.png">
-<br/>
+<p align="center">
+Figure 2: Inference Pipeline
 <img width="618" alt="training_black@2x" src="https://user-images.githubusercontent.com/56164075/101413428-44878b80-38b2-11eb-8a2d-f7d071b2dcfa.png">
+<br/>
 
+Figure 3: Inference Pipeline
+<img width="743" alt="inference_Black@2x" src="https://user-images.githubusercontent.com/56164075/101413426-42253180-38b2-11eb-9e13-61ec62e3f085.png">
+</p>
 
 
 
