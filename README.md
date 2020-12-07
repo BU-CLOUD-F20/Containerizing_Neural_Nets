@@ -66,9 +66,11 @@ Figure 1: ChRIS and MOC architecture
 
 Figure 2: Workflow Plugin Architecture
 ---
-![inference_Black@3x](https://user-images.githubusercontent.com/56164075/101413260-ee1a4d00-38b1-11eb-8b85-40342e9d26b3.png)
 
-![training_black@3x](https://user-images.githubusercontent.com/56164075/101413267-f07ca700-38b1-11eb-8dfd-ec2496d774da.png)
+<img width="743" alt="inference_Black@2x" src="https://user-images.githubusercontent.com/56164075/101413426-42253180-38b2-11eb-9e13-61ec62e3f085.png">
+<br/>
+<img width="618" alt="training_black@2x" src="https://user-images.githubusercontent.com/56164075/101413428-44878b80-38b2-11eb-8a2d-f7d071b2dcfa.png">
+
 
 
 
