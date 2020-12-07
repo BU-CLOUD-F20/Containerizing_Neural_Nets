@@ -57,14 +57,16 @@ Massachusetts Open Cloud:
 * Data from ChRIS is processed and initialized for specific plugins
 * Computation setting for the image processing of the desired plugins. Computational output is transferred back to the ChRIS platform.
 
-Figure 1: ChRIS and MOC architecture
+ChRIS and MOC architecture
 ---
+
+**Figure 1: ChRIS, MOC, and our workflow**
 <p align="center">
 <img width="469" alt="Arch_final@2x" src="https://user-images.githubusercontent.com/56164075/101412428-98917080-38b0-11eb-8ec2-c6fe25ea5fd1.png">
 </p>
 
 
-Figure 2 + 3: Workflow Plugin Architecture
+Workflow Plugin Architecture
 ---
 
 **Figure 2: Training Pipeline**
