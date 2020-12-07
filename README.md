@@ -62,14 +62,16 @@ Massachusetts Open Cloud:
 </p>
 <br/>
 Figure 1: ChRIS and MOC architecture
---
+---
+
 <br/>
 ![inference_Black@3x](https://user-images.githubusercontent.com/56164075/101413260-ee1a4d00-38b1-11eb-8b85-40342e9d26b3.png)
+</br>
 ![training_black@3x](https://user-images.githubusercontent.com/56164075/101413267-f07ca700-38b1-11eb-8dfd-ec2496d774da.png)
 <br/>
 
 Figure 2: Workflow Plugin Architecture
---
+---
 Design Implications and Discussion:
 
 Key design decisions and motivation behind them.
