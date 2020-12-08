@@ -22,8 +22,8 @@
 
 Over the past few decades, there has been a tremendous amount of work done in the area of computational medical research. Researchers used image processing, machine learning and neural networks to determine certain patterns in diseases. However, we can question the practical impact of these improvements. The lack of easy access to data and computational power became the largest obstacle for the non-technical users. Our vision is to develop a ChRIS plugin that provides a text report of the MRI images using convolutional neural networks for clinical users at Boston Children's Hospital.
 
-* Use Convolutional neural networks to segment brain MRI images.
-* Create ChRIS plugin applications to run the neural network.
+* Use Convolutional neural networks to segment brain MRI, and generate brain volume text report from segmented brain images.
+* Create ChRIS plugins for this pipeline.
 * Add the created apps to the ChRIS store and have them available in a ChRIS instance at Boston Children’s Hospital.
 
 
@@ -31,16 +31,17 @@ Over the past few decades, there has been a tremendous amount of work done in th
 
 The main target for this project is non-technical clinical end users mainly healthcare providers or researchers. However, developers are also considered for potential development and improvement.
 
-* As a clinical user, I want to be able to easily access both data and computation results of medical images, therefore I need a user-friendly platform ChRIS whose plugins can perform medical level computation for me.
+* As a clinical user, I want to analysis volume from brain MRI images. But I don't have enough computating resources and technical background, so I need a pipeline of ChRIS plugins that do the analysis for me in a user-friendly way.
 
 
 ## 3.   Scope and Features Of The Project:
 
-* Explore two neural network classifier types:
+* Explore two types of neural network classifier of brain MRI:
 	* A network classifier that attempts to segment multiple classes concurrently and provide classification of each part of the brain. 
 	* A network classifier that leverages many classifiers, each tuned to only one class pertaining to a specific anatomical feature of the brain. 
 * Convert DICOM to file types compatible with the classifiers.
-* Build or expand some applications that implement the explored neural networks, which can generate detailed reports of MRI images of a patient's neuroanatomy.
+* Convert brain MRI to seperate labels
+* Convert segmented brain images to volume text report
 * Ability to run the applications on ChRIS as plugins. 
 * (possible) Build classifiers for x86_64 and for IBM Power9 architectures that exist at the MOC.
 
@@ -80,8 +81,6 @@ Workflow Plugin Architecture
 <img width="743" alt="inference_Black@2x" src="https://user-images.githubusercontent.com/56164075/101413426-42253180-38b2-11eb-9e13-61ec62e3f085.png">
 </p>
 
-
-
 Design Implications and Discussion:
 
 Key design decisions and motivation behind them.
@@ -93,27 +92,38 @@ Key design decisions and motivation behind them.
 
 Minimum acceptance criteria includes a pipeline for the Chris app that can turn a host of MRI images into a text report regarding specific attributes of brain anatomy.
 
-## 6.  Release Planning:
-### Release #1 due (due Week 5):
+## 6. Deliverables:
+###Plugins:
+- [pl-mgz2labels](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/tree/master/pl-mgz2labels) (convert mgz files to images of seperated labels of the brain)
+- [pl-mriunet_ser](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/tree/master/pl-mriunet_ser) (3D-Unet for training and inference)
+- [pl-img2report](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/tree/master/pl-img2report) (convert segmented images to volume text report)
+- [pl-heatmap](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/tree/master/pl-heatmap) (for comparison between ground truth and segmented images)
+
+## 7. Realse planning:
+### Sprint 1:
 Understanding infrastructure and plugins. Install necessary components to begin:
 * Get familiar with ChRIS, web/command-line usage
 * Set up develop environment (Linux, Docker)
 * Research on neural networks that we need in this project
 * Learn how to use the MOC
 
-### Release #2 (due by Week 7):
-* Begin conversion of DICOM images to files suitable for the classifiers
-* Get familiar with ChRIS CNN plugin
-* Begin work on few small classifiers
-* Begin working on ChRIS connection to the cloud
+### Sprint 2:
+* Tested existed ChRIS plugins for training and inference on brain MRI
+* A design blueprint of our pipeline
+* Begin working on MOC deplyment
 
-### Release #3 (due by Week 9): 
-* Be able to explore some existed CNN related plugins on ChRIS
-* Finish a simple MRI classifiers application demo
+### Sprint 3: 
+* Finished the pipeline of the first type of classifier (one classifier for the whole brain)
+* Using models on RGB brain inference (just an experiment)
+* Deploy Pman and Pfioh using test scripts
 
-### Release #4 (due by Week 11):
-* Test and further improvement of classifiers
-* Test compatibility of smaller components of project and flow
+### Sprint 4:
+* Built a plugin that converts brain MRI to seperated labels (each for a specific region of this brain)
+* Made the current 3D-Unet plugin able to train and infer brain images in serial
+* Finished the training pipeline of the second type of classifier (one classifer for a specific region of brain)
 
-### Release #5 (due by Week 13):
-* Finish ChRIS app pipeline 
+### Sprint 5:
+* Built a plugin that can generate volume text report from segmented brain images
+* Finished the inference pipeline for two types of classifier
+* Able to run plugins on ChRIS UI
+* Able to test plugins on MOC containers
