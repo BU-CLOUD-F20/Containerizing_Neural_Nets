@@ -93,7 +93,7 @@ Key design decisions and motivation behind them.
 Minimum acceptance criteria includes a pipeline for the Chris app that can turn a host of MRI images into a text report regarding specific attributes of brain anatomy.
 
 ## 6. Deliverables:
-###Plugins:
+### Plugins:
 - [pl-mgz2labels](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/tree/master/pl-mgz2labels) (convert mgz files to images of seperated labels of the brain)
 - [pl-mriunet_ser](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/tree/master/pl-mriunet_ser) (3D-Unet for training and inference)
 - [pl-img2report](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/tree/master/pl-img2report) (convert segmented images to volume text report)
