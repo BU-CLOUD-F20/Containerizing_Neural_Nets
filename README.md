@@ -19,6 +19,7 @@ This Repo includes the test scripts we've written to test the plugins we've deve
 
 
 ## Demonstrating The Plugins We Built on MOC
+After succesfully finishing the seven steps above, you are now ready to test the plugins we have developed on MOC.
 ### PL-mgz2labels
 #### The Script
 ```
@@ -70,6 +71,37 @@ Saving to .npy files: done.
 Finished.
 ```
 ### PL-mriunet_ser
+#### The Script
+```
+#!/usr/bin/env bash                                                                                                                                                     
+
+JOBID=$1
+IP=$2
+IMAGE=$3
+
+pfurl --verb POST --raw --http $IP/api/v1/cmd --jsonwrapper 'payload' --msg \
+          '{   "action": "run",                                                                                                                                         
+               "meta":  {                                                                                                                                               
+                    "cmd":      "python3 /usr/src/mriunet_ser/mriunet_ser.py --mode 2 /share/incoming /share/outgoing",                           
+                    "auid": "cyoruk@bu.edu",                                                                                                                           
+                    "jid":      "'$JOBID'",                                                                                                                             
+                    "threaded": true,                                                                                                                                   
+                    "container": {                                                                                                                                      
+                         "target": {                                                                                                                                    
+                              "image": "'${IMAGE:-tingyizhang/pl-mriunet_ser}'"                                                                                                                       
+                              }                                                                                                                                         
+                          },                                                                                                                                            
+                    "number_of_workers": "1",
+                    "cpu_limit": "4000m",
+                    "memory_limit": "4Gi"                                                                                                                     
+                }                                                                                                                                                       
+           }' --quiet --jsonpprintindent 4 --authToken password
+```
+#### Command Line
+```
+(chris_env) cagri@cagri:~/ChRIS-E2E/scripts: ./run_mriunet_ser jidXXX pman-ece-528-containerizing-neural-nets.k-apps.osh.massopen.cloud
+```
+#### Expected Log On MOC
 ```
 ███╗   ███╗██████╗ ██╗██╗   ██╗███╗   ██╗███████╗████████╗     ███████╗███████╗██████╗ 
 ████╗ ████║██╔══██╗██║██║   ██║████╗  ██║██╔════╝╚══██╔══╝     ██╔════╝██╔════╝██╔══██╗
@@ -96,6 +128,35 @@ Test npy size:(18, 16, 256, 256, 1)
 Loading saved weights...
 ```
 ### PL-img2report
+#### The Script
+```
+#!/usr/bin/env bash                                                                                                                                                     
+
+JOBID=$1
+IP=$2
+IMAGE=$3
+
+pfurl --verb POST --raw --http $IP/api/v1/cmd --jsonwrapper 'payload' --msg \
+          '{   "action": "run",                                                                                                                                         
+               "meta":  {                                                                                                                                               
+                    "cmd":      "python3 /usr/src/img2report/img2report.py /share/incoming /share/outgoing",                           
+                    "auid": "cyoruk@bu.edu",                                                                                                                           
+                    "jid":      "'$JOBID'",                                                                                                                             
+                    "threaded": true,                                                                                                                                   
+                    "container": {                                                                                                                                      
+                         "target": {                                                                                                                                    
+                              "image": "'${IMAGE:-tingyizhang/pl-img2report}'"                                                                                                                       
+                              }                                                                                                                                         
+                          },                                                                                                                                            
+                    "number_of_workers": "1"                                                                                                                            
+                }                                                                                                                                                       
+           }' --quiet --jsonpprintindent 4 --authToken password
+```
+#### Command Line
+```
+(chris_env) cagri@cagri:~/ChRIS-E2E/scripts: ./run_img2report jidXXX pman-ece-528-containerizing-neural-nets.k-apps.osh.massopen.cloud
+```
+#### Expected Log On MOC
 ```
 _                  _____                           _   
 (_)                / __  \                         | |  
