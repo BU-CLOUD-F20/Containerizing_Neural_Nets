@@ -229,7 +229,7 @@ class Img2report(ChrisApp):
 
     def convert_to_npy(self, options):
         input_dir = options.inputdir
-        input_list = os.listdir(input_dir)
+        input_list = [subject for subject in os.listdir(input_dir) if os.path.isdir(os.path.join(input_dir, subject))]
         total = len(input_list) * 256
         count = 0
         for subject in input_list:

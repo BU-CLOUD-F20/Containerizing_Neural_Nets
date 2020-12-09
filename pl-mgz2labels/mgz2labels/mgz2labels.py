@@ -16,6 +16,7 @@ import sys
 import imageio
 import nibabel as nib
 import numpy as np
+import pickle
 from data3D import create_train_data
 from tqdm import tqdm
 
@@ -26,14 +27,14 @@ from chrisapp.base import ChrisApp
 
 
 Gstr_title = """
- __  __  _____ _________  _               ____  ______ _       _____ 
-|  \/  |/ ____|___  /__ \| |        /\   |  _ \|  ____| |     / ____|
-| \  / | |  __   / /   ) | |       /  \  | |_) | |__  | |    | (___  
-| |\/| | | |_ | / /   / /| |      / /\ \ |  _ <|  __| | |     \___ \ 
-| |  | | |__| |/ /__ / /_| |____ / ____ \| |_) | |____| |____ ____) |
-|_|  |_|\_____/_____|____|______/_/    \_\____/|______|______|_____/ 
-                                                                     
-
+                      _____  _       _          _     
+                     / __  \| |     | |        | |    
+ _ __ ___   __ _ ____`' / /'| | __ _| |__   ___| |___ 
+| '_ ` _ \ / _` |_  /  / /  | |/ _` | '_ \ / _ \ / __|
+| | | | | | (_| |/ / ./ /___| | (_| | |_) |  __/ \__ \
+|_| |_| |_|\__, /___|\_____/|_|\__,_|_.__/ \___|_|___/
+            __/ |                                     
+           |___/  
 """
 
 Gstr_synopsis = """
@@ -99,8 +100,8 @@ where necessary.)
 """
 
 # A set containing all of the unique labels
+LUT = pickle.load(open('label_LUT', 'rb'))
 LABEL_SET = {0}
-
 
 class Mgz2labels(ChrisApp):
     """
@@ -115,7 +116,7 @@ class Mgz2labels(ChrisApp):
     TYPE                    = 'ds'
     DESCRIPTION             = 'MGZ label-wise converter'
     DOCUMENTATION           = 'http://wiki'
-    VERSION                 = 0.1
+    VERSION                 = '0.1'
     ICON                    = ''  # url of an icon image
     LICENSE                 = 'Opensource (MIT)'
     MAX_NUMBER_OF_WORKERS   = 1  # Override with integer value
@@ -160,6 +161,9 @@ class Mgz2labels(ChrisApp):
 
         print(Gstr_title)
 
+        if not os.path.exists(options.outputdir):
+            os.mkdir(options.outputdir)
+
         # Slice the .mgz file to 256 .png files
         # Preprocess the .png files to create  a giant .npy file for training
         self.convert_to_jpeg(options)
@@ -187,29 +191,26 @@ class Mgz2labels(ChrisApp):
         labels = np.unique(new_image.astype(np.uint16))
         LABEL_SET.update(labels)
 
-        # now create a dictionary from the labels
-        dictionary = {}
-        dcount = 0
-        for label in labels:
-            dictionary[dcount] = label
-            dcount = dcount + 1
-
         # Input data is the ground truth
         if "mask" in output_name:
-            num_of_labels = len(dictionary)
-            for kv in dictionary:
-                print("Processing labels: {0}/{1}".format(kv, num_of_labels), end='\r')
+            num_of_labels = len(LUT)
+            count = 1
+            for label in labels:
+                print("Processing labels: {0}/{1}".format(count, num_of_labels), end='\r')
+                count += 1
+                
                 copy_image = np.copy(new_image)
             
                 # Marking one label
-                copy_image[copy_image != dictionary[kv]] = 0
-                copy_image[copy_image == dictionary[kv]] = 255
+                copy_image[copy_image != label] = 0
+                copy_image[copy_image == label] = 255
             
-                self.write_to_file(copy_image, output_name + '/label-' + "{:0>5}".format(str(dictionary[kv])))
+                self.write_to_file(copy_image, output_name + '/label-' + "{:0>5}".format(str(label)))
             print('Processing labels done.')
+
             print("Processing the whole mask...", end='\r')
-            for kv in dictionary:
-                new_image[new_image == dictionary[kv]] = kv
+            for label in labels:
+                new_image[new_image == label] = LUT[label]
             self.write_to_file(new_image, output_name + '/whole')
             print("Processing the whole mask done.")
             return
@@ -245,12 +246,12 @@ class Mgz2labels(ChrisApp):
                     data = new_image[:, :, current_slice]
 
                 # prevents lossy conversion
-                data = data.astype(np.uint8)
+                data = data.astype(np.uint16)
 
                 # alternate slices and save as png
                 if (slice_counter % 1) == 0:
                     image_name = output_name + "_" + "{:0>3}".format(str(current_slice + 1)) + ".png"
-                    imageio.imwrite(image_name, data)
+                    imageio.imwrite(image_name, data.astype(np.uint16))
 
                     # move images to folder
                     src = image_name
