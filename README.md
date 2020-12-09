@@ -127,3 +127,6 @@ Understanding infrastructure and plugins. Install necessary components to begin:
 * Finished the inference pipeline for two types of classifier
 * Able to run plugins on ChRIS UI
 * Able to test plugins on MOC containers
+
+## 8. Usage:
+There are ```in``` folders in our plugins, which are the example input files. Follow the ```readme``` in our plugins or check the ```command.txt``` in our plugins' folder, and run.
