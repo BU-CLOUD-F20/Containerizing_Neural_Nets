@@ -6,7 +6,7 @@ pfurl --verb POST --raw --httpResponseBodyParse --http $1/api/v1/cmd --msg \
             \"key\":         \"$2\"
         },
         \"local\": {
-            \"path\":         \"/home/osboxes/output/$3\",
+            \"path\":         \"/tmp/$3\",
             \"createDir\":    true
         },
         \"transport\": {
