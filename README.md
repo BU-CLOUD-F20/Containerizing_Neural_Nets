@@ -105,7 +105,10 @@ Minimum acceptance criteria includes a pipeline for the Chris app that can turn 
 - [3D-Unet-500.h5](https://drive.google.com/file/d/1Yg4n5IiH_4m6VmC0oQbPh7ql5kaR01oG/view?usp=sharing) (the model for the whole brain)
 - [label-11157.h5](https://drive.google.com/file/d/1u8P_fMxTkMfwN6A96zv8ydcOD-XCm09G/view?usp=sharing) (a sample model trained for label 11157 of a brain)
 
-## 7. Realse planning:
+### MOC:
+- [ChRIS on MOC](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/tree/MOC)
+
+## 7. Release planning:
 ### Sprint 1:
 Understanding infrastructure and plugins. Install necessary components to begin:
 * Get familiar with ChRIS, web/command-line usage
