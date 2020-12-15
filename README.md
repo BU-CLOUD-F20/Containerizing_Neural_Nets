@@ -97,9 +97,9 @@ Minimum acceptance criteria includes a pipeline for the Chris app that can turn 
 ## 6. Deliverables:
 ### Plugins:
 - [pl-mgz2labels](https://github.com/FNNDSC/pl-mgz2labels) (convert mgz files to images of seperated labels of the brain)
-- [pl-mriunet_ser](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/tree/master/pl-mriunet_ser) (3D-Unet for training and inference)
+- [pl-mriunet_ser](https://github.com/FNNDSC/pl-mriunet_ser) (3D-Unet for training and inference)
 - [pl-img2report](https://github.com/FNNDSC/pl-img2report) (convert segmented images to volume text report)
-- [pl-heatmap](https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets/tree/master/pl-heatmap) (for comparison between ground truth and segmented images)
+- [pl-heatmap](https://github.com/FNNDSC/pl-heatmap) (for comparison between ground truth and segmented images)
 
 ### Weights:
 - [3D-Unet-500.h5](https://drive.google.com/file/d/1Yg4n5IiH_4m6VmC0oQbPh7ql5kaR01oG/view?usp=sharing) (the model for the whole brain)
